@@ -1,0 +1,53 @@
+<!--
+Here you can include any variables that you would like to call, 
+either in this doucment or inside any of you includes
+-->
+{{
+	var pageTitle = 'Node Server Template Page';
+    var ejsUp = 'This message was placed here by ejs';	
+}}
+
+{{include inc.start.html}}
+	{{include inc.header.html}}
+<!-- Your content here-->
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span9">
+            <div class="hero-unit">
+                <h1>Hello, world!</h1>
+                <p>Hey I am a node server boilerplate.</p>
+                <p>I have been preconfigured with all a node application needs.</p>
+                <p><a href="https://github.com/jeremythuff/node-server-template" class="btn btn-primary btn-large">Learn more »</a></p>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h3>socket.io</h3>
+                    <h4 class="socketConnectionStatus" style="color:red">
+                        disconnected
+                    </h4>        
+                    <pre>
+                        <em class="socketConnectionMessage">There is no connection to the server :(</em>
+                    </pre>
+                </div>
+                <div class="span6">
+                    <h3>ejs.js</h3>
+                    <h4 class="ejsStatus" style="color:red">ejs down</h4>        
+                    <pre><em class="ejsCheck">{{= ejsUp }}</em></pre>
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <h3>node-apps:</h3>
+                <ul class="moduleList" style="list-style:none;">
+
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End of body content-->
+    {{include inc.footer.html}}
+{{include inc.end.html}}
