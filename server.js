@@ -17,7 +17,7 @@ ejs.close 	= 	'}}';
 var io;
 var socket_listener;
 var oneDay 	= 	86400000;
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000;
 var IPADDRESS = process.env.IP || '127.0.0.1';
 server 	= 	express();
 server.use(express.compress());

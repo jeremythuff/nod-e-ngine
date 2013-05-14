@@ -100,7 +100,13 @@ padding-bottom: 40px;
 }
 
 
+.server-controlls {
+    padding-left: 10px;
+}
 
+.server-controlls:hover {
+    cursor: pointer;
+}
 
 
 
