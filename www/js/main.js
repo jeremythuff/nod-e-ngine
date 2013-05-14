@@ -8,13 +8,11 @@ $(document).ready(function() {
 		$(".ejsStatus").html("ejs is up");
 	}
 
-	$(".server-controlls").on("hover", function(e) {
-	  if(e.type == "mouseenter") {
-	    $(this).addClass("icon-white");
-	  }
-	  else if (e.type == "mouseleave") {
+	$(document).on('mouseover', '.server-controlls', function() {
+    	$(this).addClass("icon-white");
+	});
+	$(document).on('mouseout', '.server-controlls', function() {
 	    $(this).removeClass("icon-white");
-	  }
 	});
 
 
@@ -43,8 +41,21 @@ socket.on('modules', function(data) {
 		var filename = this.substring(this.lastIndexOf("\\")+1);
 		if(filename[0] !== ".") {
 			$(".moduleList").append("<li><i class='icon-folder-open'></i> "+filename+"</li>");
-			$(".serversTable").append("<tr><td><i class='icon-folder-open'></i> "+filename+"</td><td>A description</td><td>stopped</td><td><i class='icon-play server-controlls'></i> <i class='icon-stop server-controlls'></i> <i class='icon-refresh server-controlls'></i></td></tr>");
+			$(".serversTable").append("<tr><td><i class='icon-folder-open'></i> "+filename+"</td><td>A description</td><td>stopped</td><td data-server-name="+filename+"><i class='icon-play server-controlls server-start'></i> <i class='icon-stop server-controlls server-stop'></i> <i class='icon-refresh server-controlls server-refresh'></i></td></tr>");
 		}
 	});
-
 });
+
+$(document).on('click', '.server-controlls', function() {
+    var thisServer = $(this).parents("td").attr("data-server-name");
+    if($(this).hasClass("server-start")) {
+    	socket.emit("start", thisServer);
+    }
+    if($(this).hasClass("server-stop")) {
+    	socket.emit("stop", thisServer);
+    }
+    if($(this).hasClass("server-refresh")) {
+    	socket.emit("refresh", thisServer);
+    }
+});
+
